@@ -21,6 +21,9 @@ set mailserver <%= node[:monit][:mailserver][:host] %> port <%= node[:monit][:ma
   using tlsv1
   with timeout 30 seconds
   using hostname "<%= node[:monit][:mailserver][:hostname] %>"
+      <% if node[:monit][:mailserver][:using_mandrill] %>
+           set mail-format { from: <%= node[:monit][:mailserver][:mail_format] %>} 
+      <% end %>
 <% end %>
 <% end %>
 
