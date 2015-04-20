@@ -7,9 +7,9 @@ set logfile syslog facility log_daemon
   <% if node[:monit][:notify_emails] %>
     <% node[:monit][:notify_emails].each do |email| %>
       <% if node[:monit][:minimise_alerts] %>
-set alert <%= email %> but not on {instance, pid, ppid, resource}
+set alert <%= email %> mail-format { from: <%= node[:monit][:mailserver][:mail_format] %>} but not on {instance, pid, ppid, resource}
       <% else %>
-set alert <%= email %>
+set alert <%= email %> mail-format { from: <%= node[:monit][:mailserver][:mail_format] %>} 
       <% end %>
     <% end %>
   <% end %>
@@ -22,7 +22,7 @@ set mailserver <%= node[:monit][:mailserver][:host] %> port <%= node[:monit][:ma
   with timeout 30 seconds
   using hostname "<%= node[:monit][:mailserver][:hostname] %>"
   
-set mail-format { from: <%= node[:monit][:mailserver][:mail_format] %>} 
+
 
 <% end %>
 <% end %>
