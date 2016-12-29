@@ -22,9 +22,9 @@
  [Service]
  Type=simple
  KillMode=process
- ExecStart=/usr/local/bin/monit -I
- ExecStop=/usr/local/bin/monit quit
- ExecReload=/usr/local/bin/monit reload
+ ExecStart=/usr/bin/monit -I
+ ExecStop=/usr/bin/monit quit
+ ExecReload=/usr/bin/monit reload
  Restart = on-abnormal
 
  [Install]
