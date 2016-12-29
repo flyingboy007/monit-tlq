@@ -42,3 +42,7 @@ execute "restart-monit" do
   command "monit reload"
   action :nothing
 end
+
+execute "enable monit to start after every reboot" do
+	command "systemctl enable monit.service"
+end
