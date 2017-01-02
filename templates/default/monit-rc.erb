@@ -18,11 +18,8 @@ set alert <%= email %> mail-format { from: <%= node[:monit][:mailserver][:mail_f
 set mailserver <%= node[:monit][:mailserver][:host] %> port <%= node[:monit][:mailserver][:port] %>
   username "<%= node[:monit][:mailserver][:username] %>"
   password "<%= node[:monit][:mailserver][:password] %>"
-  using tlsv1
+  using ssl
   with timeout 30 seconds
-  using hostname "<%= node[:monit][:mailserver][:hostname] %>"
-  
-
 
 <% end %>
 <% end %>
